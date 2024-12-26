@@ -29,7 +29,7 @@ dag = DAG(
 
 # Define cluster config
 CLUSTER_NAME = 'dataproc-spark-airflow-demo'
-PROJECT_ID = 'psyched-service-442305-q1'
+PROJECT_ID = 'directed-strata-442603-b8'
 REGION = 'us-central1'
 CLUSTER_CONFIG = {
     'master_config': {
@@ -37,7 +37,7 @@ CLUSTER_CONFIG = {
         'machine_type_uri': 'n1-standard-2',  # Machine type
         'disk_config': {
             'boot_disk_type': 'pd-standard',
-            'boot_disk_size_gb': 30
+            'boot_disk_size_gb': 16
         }
     },
     'worker_config': {
@@ -45,7 +45,7 @@ CLUSTER_CONFIG = {
         'machine_type_uri': 'n1-standard-2',  # Machine type
         'disk_config': {
             'boot_disk_type': 'pd-standard',
-            'boot_disk_size_gb': 30
+            'boot_disk_size_gb': 16
         }
     },
     'software_config': {
@@ -72,7 +72,7 @@ create_cluster = DataprocCreateClusterOperator(
 
 submit_pyspark_job = DataprocSubmitPySparkJobOperator(
     task_id='submit_pyspark_job_on_dataproc',
-    main='gs://airflow-projetcs-gds/airflow-project-1/spark-job/emp_batch_job.py',
+    main='gs://airflow-projetcs-gds/Airflow_Project_1/spark-job/emp_batch_job.py',
     cluster_name=CLUSTER_NAME,
     region=REGION,
     project_id=PROJECT_ID,
